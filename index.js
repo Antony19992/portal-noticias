@@ -3,9 +3,12 @@ const movingText = document.querySelector('.moving-text');
 const textWidth = movingText.scrollWidth;
 const containerWidth = movingText.parentElement.offsetWidth;
 
+const urlParams = new URLSearchParams(window.location.search);
+const categoryNotice = urlParams.get('categoria') || "economia";
+
 async function fetchRSS() {
     try {
-        const response = await fetch('https://corsproxy.io/https://g1.globo.com/dynamo/economia/rss2.xml');
+        const response = await fetch(`https://corsproxy.io/https://g1.globo.com/dynamo/${categoryNotice}/rss2.xml`);
         if (!response.ok) {
             throw new Error(`Erro na requisição: ${response.status}`);
         }
