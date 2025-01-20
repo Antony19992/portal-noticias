@@ -31,13 +31,13 @@ body {
 
 .container {
     position: absolute;
-    bottom: 0;
-    width: calc(100% - 662px);
+    bottom: -18px;
+    width: calc(145% - 654px);
     height: 50px;
     background: rgba(0, 0, 0, 0.0);
     overflow: hidden;
     z-index: 2;
-    left: 463px;
+    left: 197px;
 }
 
 .moving-text {
@@ -56,13 +56,13 @@ body {
     z-index: 2;
     position: fixed;
     color: white;
-    font-size: 40px;
+    font-size: 24px;
     bottom: 28px;
-    left: 250px;
+    left: 117px;
     width: 68%;
     justify-content: center;
     display: flex;
-    height: 186px;
+    height: 90px;
 }
 
 h4 {
