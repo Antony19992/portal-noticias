@@ -1,11 +1,9 @@
-# Usar a imagem oficial do Nginx
 FROM nginx:alpine
 
-# Copiar os arquivos do projeto para o diretório padrão do Nginx
-COPY . /usr/share/nginx/html
+COPY . /usr/share/nginx/html/
 
-# Expor a porta 80 para acessar o servidor
-EXPOSE 80
+# Altere a configuração padrão para usar a porta 8089
+RUN sed -i 's/listen 80;/listen 8089;/' /etc/nginx/conf.d/default.conf
 
-# Comando padrão para iniciar o Nginx
+EXPOSE 8089
 CMD ["nginx", "-g", "daemon off;"]
