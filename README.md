@@ -14,5 +14,5 @@ docker build -t portal-noticias .
 Depois de criar a imagem, execute o seguinte comando para iniciar o contêiner:
 
 ```bash
-docker run -d -p 8089:8089 --name noticias-container portal-noticias
+docker run -d -p 8089:80 --name noticias-container portal-noticias
 ```

@@ -5,6 +5,7 @@ const containerWidth = movingText.parentElement.offsetWidth;
 
 const urlParams = new URLSearchParams(window.location.search);
 const categoryNotice = urlParams.get('categoria') || "economia";
+const id = parseInt(urlParams.get('id')) || 0;
 
 async function fetchRSS() {
     try {
@@ -17,31 +18,30 @@ async function fetchRSS() {
         const parser = new DOMParser();
         const xml = parser.parseFromString(rssText, "application/xml");
 
-        const firstItem = xml.querySelector("item");
+        const items = xml.querySelectorAll("item");
 
-        if (!firstItem) {
-            throw new Error("Nenhum item encontrado no RSS.");
+        if (id < 0 || id >= items.length) {
+            throw new Error(`Nenhum item encontrado no índice ${id}.`);
         }
 
-        const title = firstItem.querySelector("title").textContent;
+        const selectedItem = items[id];
+
+        const title = selectedItem.querySelector("title").textContent;
         document.querySelector(".title h4").textContent = title;
 
-        const image = firstItem.querySelector("media\\:content, content")?.getAttribute("url");
+        const image = selectedItem.querySelector("media\\:content, content")?.getAttribute("url");
         if (image) {
             document.querySelector(".background-image").style.content = `url(${image})`;
         } else {
             console.warn("Nenhuma imagem encontrada no RSS.");
         }
 
-        // Limitar o resumo ao primeiro trecho de texto antes de truncar
-        let description = firstItem.querySelector("description").textContent;
-        description = description.replace(/<[^>]*>/g, '').trim(); // Remove tags HTML
+        let description = selectedItem.querySelector("description").textContent;
+        description = description.replace(/<[^>]*>/g, '').trim(); 
 
-        // Limita o tamanho do texto
         if (description.length > 200) {
-            description = description.substring(0, 200) + '...'; // Resumo do conteúdo
+            description = description.substring(0, 200) + '...'; 
         }
-        
         document.querySelector(".moving-text").textContent = description;
 
     } catch (error) {
