@@ -23,7 +23,7 @@ body {
     height: 100%;
     background: rgba(0, 0, 0, 0.0);
     z-index: 2;
-    background-image: url(./images/notícias%20TV.png);
+    background-image: url(./images/noticiasTV.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -31,13 +31,10 @@ body {
 
 .container {
     position: absolute;
-    bottom: -18px;
-    width: calc(145% - 654px);
     height: 50px;
     background: rgba(0, 0, 0, 0.0);
     overflow: hidden;
     z-index: 2;
-    left: 197px;
 }
 
 .moving-text {
@@ -57,8 +54,6 @@ body {
     position: fixed;
     color: white;
     font-size: 24px;
-    bottom: 28px;
-    left: 117px;
     width: 68%;
     justify-content: center;
     display: flex;
@@ -76,5 +71,73 @@ h4 {
     }
     to {
         transform: translateX(-100%);
+    }
+}
+
+@media (max-width: 1920px) and (min-width: 1080px) {
+    .background-image {
+        background-size: cover;
+    }
+
+    .baseboard {
+        background-size: contain;
+        background-position: center;
+    }
+
+    .container {
+        width: 1539px;
+        left: 198px;
+        bottom: 5px;
+    }
+
+    .moving-text {
+        font-size: 20px;
+        left: 200px;
+        bottom: 27px;
+    }
+
+    .title {
+        font-size: 29px;
+        bottom: 65px;
+        left: 96px;
+        width: 1560px;
+        height: 104px;
+        padding: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 1280px) and (min-width: 720px) {
+    .background-image {
+        background-size: cover;
+    }
+
+    .baseboard {
+        background-size: contain;
+        background-position: center;
+    }
+
+    .container {
+        width: calc(141% - 654px);
+        left: 65px;
+        height: 69px;
+        bottom: -8px;
+    }
+
+    .moving-text {
+        font-size: 20px;
+        left: 200px;
+        bottom: 27px;
+    }
+
+    .title {
+        font-size: 22px;
+        bottom: 46px;
+        left: 64px;
+        width: 81%;
+        height: 47px;
+        padding-bottom: 22px;
     }
 }
